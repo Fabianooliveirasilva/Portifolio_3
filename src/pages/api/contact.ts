@@ -57,7 +57,12 @@ export const POST: APIRoute = async ({ request, clientAddress, url }) => {
 
   const sender = getLimiter();
   if (!sender) return json(503, { ok: false });
-  if (!(await sender.allow(clientAddress))) return json(429, { ok: false });
+  try {
+    if (!(await sender.allow(clientAddress))) return json(429, { ok: false });
+  } catch (error) {
+    console.error('contact: rate limiter failed', (error as Error).message);
+    return json(503, { ok: false });
+  }
 
   const text = await request.text();
   if (text.length > MAX_BYTES) return json(413, { ok: false });
@@ -79,20 +84,28 @@ export const POST: APIRoute = async ({ request, clientAddress, url }) => {
     return json(503, { ok: false });
 
   const { name, email, message } = result.value;
-  const response = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      authorization: `Bearer ${RESEND_API_KEY}`,
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify({
-      from: CONTACT_FROM,
-      to: [CONTACT_TO],
-      reply_to: email,
-      subject: `Portfolio contact from ${name}`,
-      text: `${message}\n\n${name} <${email}>`,
-    }),
-  });
+  let response: Response;
+  try {
+    response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        authorization: `Bearer ${RESEND_API_KEY}`,
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: CONTACT_FROM,
+        to: [CONTACT_TO],
+        reply_to: email,
+        subject: `Portfolio contact from ${name}`,
+        text: `${message}\n\n${name} <${email}>`,
+      }),
+    });
+  } catch (error) {
+    console.error('contact: email provider failed', (error as Error).message);
+    return json(502, { ok: false });
+  }
+  if (!response.ok)
+    console.error('contact: email provider status', response.status);
   return response.ok ? json(200, { ok: true }) : json(502, { ok: false });
 };
 

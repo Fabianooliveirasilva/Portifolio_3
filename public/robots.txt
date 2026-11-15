@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://portfolio-fabiano.vercel.app/sitemap-index.xml
+Sitemap: https://portifolio-3-delta.vercel.app/sitemap-index.xml

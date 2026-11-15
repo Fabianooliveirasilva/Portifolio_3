@@ -6,7 +6,7 @@ const secret = (optional = true) =>
   envField.string({ context: 'server', access: 'secret', optional });
 
 export default defineConfig({
-  site: 'https://portfolio-fabiano.vercel.app',
+  site: 'https://portifolio-3-delta.vercel.app',
   adapter: vercel(),
   build: { inlineStylesheets: 'always' },
   integrations: [

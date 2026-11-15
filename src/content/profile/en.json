@@ -1,0 +1,207 @@
+{
+  "metaDescription": "Fabiano Oliveira Silva, QA engineer: API and UI testing, automation with Playwright. Relocating to Spain, open to remote, hybrid or on-site work.",
+  "role": "QA engineer",
+  "tagline": "I test APIs and interfaces, automate with Playwright, and find the failure before the user does.",
+  "status": "Relocating to Spain. Open to remote, hybrid or on-site work.",
+  "heroVideoLabel": "Playwright test suite running",
+  "photoAlt": "Portrait of Fabiano: a man with short dark hair and light stubble, wearing a black leather jacket in front of a light marble wall.",
+  "education": {
+    "title": "Education",
+    "items": [
+      {
+        "degree": "Technologist degree in Systems Analysis and Development",
+        "school": "Universidade Cruzeiro do Sul (UNICSUL), Brazil",
+        "status": "Completed in 2021"
+      },
+      {
+        "degree": "MBA and postgraduate degree in Cybersecurity",
+        "school": "Universidade Cruzeiro do Sul (UNICSUL), Brazil",
+        "status": "Completed in 2023"
+      },
+      {
+        "degree": "Extension course in Test Automation",
+        "school": "Centro Universitário UNIFATEC, Brazil",
+        "status": "Completed"
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills",
+    "groups": [
+      {
+        "label": "QA and testing",
+        "items": [
+          "manual and automated testing",
+          "functional",
+          "regression",
+          "exploratory",
+          "integration",
+          "UI",
+          "E2E",
+          "cross-browser",
+          "test case planning and execution",
+          "bug reporting and tracking"
+        ]
+      },
+      {
+        "label": "Automation",
+        "items": [
+          "Playwright",
+          "TypeScript",
+          "Playwright MCP",
+          "web test automation",
+          "script maintenance"
+        ]
+      },
+      {
+        "label": "API and databases",
+        "items": [
+          "Postman",
+          "REST APIs",
+          "JSON",
+          "SQL",
+          "MySQL",
+          "data validation and testing"
+        ]
+      },
+      {
+        "label": "Tools and processes",
+        "items": [
+          "Jira",
+          "Git",
+          "GitHub",
+          "GitHub Actions",
+          "CI/CD fundamentals",
+          "SDLC",
+          "STLC",
+          "Agile",
+          "Scrum",
+          "Kanban"
+        ]
+      },
+      {
+        "label": "Development",
+        "items": [
+          "HTML5",
+          "CSS3",
+          "JavaScript",
+          "TypeScript",
+          "React",
+          "Vue.js",
+          "Node.js",
+          "Express.js",
+          "Python",
+          "Java",
+          "C#"
+        ]
+      },
+      {
+        "label": "AI applied to QA",
+        "items": [
+          "use of AI and Model Context Protocol (MCP) to support test analysis, generation and maintenance"
+        ]
+      }
+    ]
+  },
+  "work": {
+    "title": "Work",
+    "intro": "Four projects on GitHub, with the code open.",
+    "viewCode": "View code on GitHub",
+    "didLabel": "What I did",
+    "stackLabel": "Stack"
+  },
+  "others": {
+    "title": "Other projects",
+    "items": [
+      {
+        "name": "SENTINELX",
+        "line": "Attack surface management and vulnerability assessment platform, for authorized use. Python, FastAPI and React.",
+        "repo": "https://github.com/Fabianooliveirasilva/SENTINELX"
+      },
+      {
+        "name": "Black Smoke Burger",
+        "line": "Burger shop delivery app with E2E, accessibility and visual tests. Next.js and Prisma.",
+        "repo": "https://github.com/Fabianooliveirasilva/Black-smoke-burguer-de-brasa"
+      },
+      {
+        "name": "Websites and landing pages",
+        "line": "Pet shop, car window film, Beco do Cau, an IT school and a calculator. HTML, CSS and JavaScript."
+      }
+    ]
+  },
+  "qa": {
+    "title": "What I do in QA",
+    "items": [
+      {
+        "title": "E2E automation",
+        "text": "Playwright with Page Object, fixtures and centralized data, on Chromium, Firefox and WebKit."
+      },
+      {
+        "title": "Manual and exploratory testing",
+        "text": "Test cases, regression and exploratory sessions. Every bug comes with steps to reproduce and evidence."
+      },
+      {
+        "title": "API testing",
+        "text": "Playwright and Postman, contracts validated with Ajv, and authentication boundaries."
+      },
+      {
+        "title": "Data and SQL",
+        "text": "SQL queries to check that the data matches what the screen shows."
+      },
+      {
+        "title": "AI applied to testing",
+        "text": "Playwright MCP to explore the application and AI to help write test cases, always reviewed by me."
+      }
+    ]
+  },
+  "path": {
+    "title": "Background",
+    "intro": "An electrician learns early that the fault is rarely where it shows up. That habit of diagnosing before touching anything is what I bring to software testing.",
+    "entries": [
+      {
+        "period": "2026 to today",
+        "title": "QA engineer",
+        "text": "Manual, regression and exploratory testing, E2E and API automation with Playwright, SQL, Jira and AI applied to testing."
+      },
+      {
+        "period": "2025 to Jan 2026",
+        "title": "Front-end developer",
+        "text": "HTML, CSS, JavaScript, React, Vue, Tailwind and Vite."
+      },
+      {
+        "period": "2010 to 2024",
+        "title": "Electrician technician",
+        "text": "Fault diagnosis, troubleshooting and attention to detail in the field."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "intro": "Write to me about a role or a project. I reply in English, Spanish or Portuguese.",
+    "languagesLabel": "Languages",
+    "languages": [
+      {
+        "label": "Portuguese",
+        "text": "native"
+      },
+      {
+        "label": "English",
+        "text": "advanced"
+      },
+      {
+        "label": "Spanish",
+        "text": "advanced"
+      }
+    ],
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "send": "Send message",
+      "sending": "Sending",
+      "ok": "Message sent. I will reply soon.",
+      "error": "Could not send right now. Try again in a few minutes or use the email next to the form.",
+      "invalid": "Check the fields: a name, a valid email and a message of up to 2000 characters."
+    }
+  }
+}

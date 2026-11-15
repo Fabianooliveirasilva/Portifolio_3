@@ -1,0 +1,179 @@
+@layer reset, base;
+
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  * {
+    margin: 0;
+  }
+  img,
+  video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  button,
+  input,
+  textarea {
+    font: inherit;
+    color: inherit;
+  }
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: var(--space-7);
+  }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-text);
+    font-size: var(--step-0);
+    line-height: 1.65;
+    min-height: 100dvh;
+    isolation: isolate;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        circle 9rem at 78% 22%,
+        rgb(255 190 210 / 0.16),
+        transparent 70%
+      ),
+      radial-gradient(
+        circle 5rem at 88% 68%,
+        rgb(255 190 210 / 0.12),
+        transparent 70%
+      ),
+      radial-gradient(
+        circle 12rem at 38% 86%,
+        rgb(255 170 200 / 0.12),
+        transparent 70%
+      ),
+      linear-gradient(
+        108deg,
+        transparent 20%,
+        rgb(255 205 225 / 0.1) 32%,
+        transparent 44%,
+        rgb(255 205 225 / 0.06) 58%,
+        transparent 68%
+      ),
+      radial-gradient(70rem 44rem at 6% -8%, #6e1b42, transparent 62%),
+      radial-gradient(56rem 40rem at 100% 12%, #5c1236, transparent 64%),
+      radial-gradient(60rem 36rem at 55% 108%, #7a1d44, transparent 62%),
+      linear-gradient(165deg, #3b0f23, #1f0611 62%, #2b0a16);
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    line-height: 1.05;
+    text-wrap: balance;
+  }
+  h1 {
+    font-size: var(--step-hero);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+  h2 {
+    font-size: var(--step-3);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  h3 {
+    font-size: var(--step-1);
+    font-weight: 600;
+  }
+  p {
+    max-width: var(--measure);
+    text-wrap: pretty;
+  }
+  a {
+    color: var(--ink);
+    text-decoration-line: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.25em;
+    transition: color 0.15s;
+  }
+  a:hover {
+    color: var(--accent);
+  }
+  :focus-visible {
+    outline: var(--focus);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  .skip-link {
+    position: absolute;
+    inset-block-start: var(--space-3);
+    inset-inline-start: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    background: var(--accent);
+    color: var(--accent-ink);
+    transform: translateY(-200%);
+  }
+  .skip-link:focus {
+    transform: none;
+  }
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .sheen {
+    position: relative;
+    overflow: hidden;
+  }
+  .sheen::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 35%,
+      rgb(255 255 255 / 0.22) 48%,
+      rgb(255 255 255 / 0.08) 52%,
+      transparent 65%
+    );
+    transform: translateX(-100%);
+  }
+  @media (hover: hover) {
+    .sheen:hover::after {
+      opacity: 1;
+      transform: translateX(100%);
+      transition:
+        transform 0.9s ease,
+        opacity 0.2s;
+    }
+  }
+  @media (prefers-reduced-transparency: reduce) {
+    :root {
+      --glass-bg: var(--surface);
+      --glass-blur: none;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation: none !important;
+      transition: none !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

@@ -1,0 +1,61 @@
+---
+import Section from './Section.astro';
+
+interface Props {
+  title: string;
+  items: { degree: string; school: string; status: string }[];
+}
+const { title, items } = Astro.props;
+---
+
+<Section small rail id="education" title={title} class="education">
+  <ul>
+    {items.map((item) => (
+      <li>
+        <h3>{item.degree}</h3>
+        <p class="school">{item.school}</p>
+        <p class="status">{item.status}</p>
+      </li>
+    ))}
+  </ul>
+</Section>
+
+<style>
+  .education {
+    gap: var(--space-5);
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-block-start: 1px solid var(--line-strong);
+  }
+  li {
+    display: grid;
+    gap: var(--space-1);
+    padding-block: var(--space-4);
+    border-block-end: 1px solid var(--line);
+  }
+  h3 {
+    font-size: var(--step-1);
+  }
+  .school,
+  .status {
+    color: var(--ink-muted);
+  }
+  .status {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--accent);
+  }
+  @media (min-width: 48rem) {
+    li {
+      grid-template-columns: 5fr 4fr 3fr;
+      column-gap: var(--space-6);
+      align-items: baseline;
+    }
+    .status {
+      justify-self: end;
+    }
+  }
+</style>

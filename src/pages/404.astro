@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import { ui, path } from '../i18n/ui';
+const t = ui['pt-br'];
+---
+
+<Base
+  lang="pt-br"
+  title={`${t.notFoundTitle} | Fabiano Oliveira Silva`}
+  description={t.notFoundText}
+  noindex
+>
+  <h1 class="nf">404</h1>
+  <p>{t.notFoundText}</p>
+  <p>
+    <a href={path('pt-br')}>{t.notFoundLink}</a>
+  </p>
+</Base>
+
+<style>
+  .nf {
+    margin-block-end: var(--space-4);
+  }
+</style>

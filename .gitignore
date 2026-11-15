@@ -1,0 +1,12 @@
+node_modules
+dist
+.astro
+.vercel
+.env
+.env.*
+!.env.example
+playwright-report
+test-results
+.lighthouseci
+assets-originais/*
+!assets-originais/texturina-LICENSE-OFL.txt

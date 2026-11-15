@@ -1,0 +1,299 @@
+---
+import { Picture } from 'astro:assets';
+import poster from '../assets/images/hero-poster.png';
+import photo from '../assets/images/fabiano.jpg';
+import { ui, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  role: string;
+  tagline: string;
+  status: string;
+  videoLabel: string;
+  photoAlt: string;
+}
+const { lang, role, tagline, status, videoLabel, photoAlt } = Astro.props;
+const t = ui[lang];
+---
+
+<section class="hero" aria-labelledby="hero-title">
+  <h1 id="hero-title">
+    Fabiano <span>Oliveira Silva</span>
+  </h1>
+  <p class="role">{role}</p>
+  <p class="tagline">{tagline}</p>
+  <p class="status">{status}</p>
+  <div class="portrait">
+    <Picture
+      src={photo}
+      alt={photoAlt}
+      formats={['avif']}
+      fallbackFormat="webp"
+      widths={[320, 480, 700]}
+      sizes="(min-width: 64rem) 22rem, 70vw"
+      quality={62}
+      loading="eager"
+      decoding="async"
+    />
+  </div>
+  <figure
+    class="media"
+
+    data-hero-video
+    data-src-lg="/video/suite"
+    data-src-sm="/video/suite-sm"
+    data-pause={t.pause}
+    data-play={t.play}
+  >
+    <figcaption class="titlebar">
+      <span class="title">{videoLabel}</span>
+      <button type="button" class="toggle" hidden></button>
+      <span class="wc" aria-hidden="true">
+        <i class="min"></i>
+        <i class="max"></i>
+        <i class="close"></i>
+      </span>
+    </figcaption>
+    <div class="frame">
+      <Picture
+        src={poster}
+        alt={videoLabel}
+        formats={['avif']}
+        fallbackFormat="webp"
+        widths={[480, 800, 1200]}
+        sizes="(min-width: 64rem) 55vw, 100vw"
+        quality={55}
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        class="poster"
+      />
+      <video
+        muted
+        playsinline
+        loop
+        preload="none"
+        hidden
+        aria-label={videoLabel}
+      ></video>
+    </div>
+  </figure>
+</section>
+
+<style>
+  .hero {
+    display: grid;
+    gap: var(--space-4);
+    padding-block-end: var(--space-9);
+  }
+  h1 {
+    font-family: var(--font-name);
+    margin-block-end: var(--space-3);
+    overflow-wrap: anywhere;
+  }
+  h1 span {
+    display: block;
+    font-weight: 300;
+    letter-spacing: -0.04em;
+  }
+  .role {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .tagline {
+    font-size: var(--step-2);
+    line-height: 1.3;
+    max-width: 14.5em;
+  }
+  .status {
+    color: var(--ink-muted);
+    max-width: 18.5em;
+    padding-inline-start: var(--space-4);
+    border-inline-start: 3px solid var(--accent);
+  }
+  .portrait {
+    justify-self: start;
+    width: min(70vw, 22rem);
+    padding: var(--space-2);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-edge);
+    border-radius: var(--radius-m);
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: var(--glass-blur);
+  }
+  .portrait :global(img) {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: 50% 20%;
+    border-radius: var(--space-2);
+  }
+  .media {
+    position: relative;
+    container-type: inline-size;
+    margin: var(--space-6) 0 0;
+    padding: 0 var(--space-2) var(--space-2);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-edge);
+    border-radius: var(--radius-m);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.5),
+      0 2rem 3rem -1.5rem rgb(0 0 0 / 0.6);
+    backdrop-filter: var(--glass-blur);
+  }
+  .titlebar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-2) var(--space-1) var(--space-2) var(--space-3);
+    font-family: var(--font-display);
+    font-size: var(--step--1);
+    font-weight: 500;
+  }
+  .title {
+    flex: 1;
+    min-width: 0;
+    line-height: 1.3;
+  }
+  @media (max-width: 40rem) {
+    .titlebar {
+      flex-wrap: wrap;
+    }
+    .title {
+      flex-basis: 100%;
+      order: 2;
+    }
+    .toggle {
+      order: 3;
+    }
+    .wc {
+      order: 1;
+      margin-inline-start: auto;
+    }
+  }
+  .wc {
+    display: flex;
+    gap: 2px;
+    align-self: flex-start;
+    margin-block-start: calc(var(--space-2) * -1);
+  }
+  .wc i {
+    position: relative;
+    width: 1.7rem;
+    height: 1.2rem;
+    border: 1px solid var(--glass-edge);
+    border-block-start: 0;
+    background: linear-gradient(
+      rgb(255 255 255 / 0.28) 50%,
+      rgb(255 255 255 / 0.06) 50%
+    );
+  }
+  .wc i:first-child {
+    border-end-start-radius: var(--space-1);
+  }
+  .wc i:last-child {
+    width: 2.6rem;
+    border-end-end-radius: var(--space-1);
+    background: linear-gradient(#e0644e 50%, #a8261a 50%);
+  }
+  .wc i::before,
+  .wc i::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
+  }
+  .min::before {
+    width: 0.5rem;
+    height: 2px;
+    inset-block-start: 55%;
+    background: var(--ink);
+  }
+  .max::before {
+    width: 0.5rem;
+    height: 0.4rem;
+    border: 1.5px solid var(--ink);
+  }
+  .close::before,
+  .close::after {
+    width: 0.65rem;
+    height: 2px;
+    background: #fff;
+    transform: rotate(45deg);
+  }
+  .close::after {
+    transform: rotate(-45deg);
+  }
+  .frame {
+    aspect-ratio: 16 / 9;
+    background: var(--surface);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--space-1);
+  }
+  .frame :global(.poster),
+  .frame video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.6) sepia(0.3) hue-rotate(-20deg) brightness(0.82);
+  }
+  .frame video {
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .frame video[data-live] {
+    opacity: 1;
+  }
+  .toggle {
+    min-height: 28px;
+    padding: 0 var(--space-3);
+    border: 1px solid var(--glass-edge);
+    border-radius: 999px;
+    background: rgb(255 255 255 / 0.12);
+    color: var(--ink);
+    font: inherit;
+    cursor: pointer;
+  }
+  .toggle:hover {
+    background: var(--ink);
+    color: var(--bg);
+  }
+  @media (min-width: 64rem) {
+    .hero {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: var(--space-6);
+      align-items: start;
+    }
+    h1,
+    .role,
+    .tagline,
+    .status {
+      grid-column: 1 / 7;
+    }
+    h1 {
+      grid-row: 1;
+    }
+    .portrait {
+      grid-column: 9 / -1;
+      grid-row: 1;
+      justify-self: end;
+      width: 100%;
+    }
+    .media {
+      grid-column: 7 / -1;
+      grid-row: 2 / span 3;
+      align-self: end;
+      margin-block-start: 0;
+    }
+  }
+</style>
+
+<script>
+  import '../scripts/hero-video';
+</script>

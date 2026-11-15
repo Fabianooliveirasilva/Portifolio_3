@@ -1,0 +1,11 @@
+dist
+.astro
+.vercel
+node_modules
+assets-originais
+package-lock.json
+.claude
+playwright-report
+test-results
+tests/visual/*-snapshots
+.lighthouseci

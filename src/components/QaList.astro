@@ -1,0 +1,73 @@
+---
+import Section from './Section.astro';
+
+interface Props {
+  title: string;
+  items: { title: string; text: string }[];
+}
+const { title, items } = Astro.props;
+const [main, ...rest] = items;
+---
+
+<Section id="qa" title={title} class="qa">
+  <div class="layout">
+    {main && (
+      <article class="main sheen">
+        <h3>{main.title}</h3>
+        <p>{main.text}</p>
+      </article>
+    )}
+    <ul>
+      {rest.map((item) => (
+        <li>
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Section>
+
+<style>
+  .layout {
+    display: grid;
+    gap: var(--space-7);
+  }
+  .main {
+    padding: var(--space-6);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-edge);
+    border-radius: var(--radius-m);
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: var(--glass-blur);
+  }
+  .main h3 {
+    font-size: var(--step-3);
+    margin-block-end: var(--space-4);
+  }
+  .main p {
+    font-size: var(--step-1);
+    line-height: 1.45;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-block-start: 1px solid var(--line-strong);
+  }
+  li {
+    padding-block: var(--space-4);
+    border-block-end: 1px solid var(--line-strong);
+  }
+  li h3 {
+    font-size: var(--step-1);
+    margin-block-end: var(--space-1);
+  }
+  @media (min-width: 64rem) {
+    .layout {
+      grid-template-columns: 7fr 5fr;
+      column-gap: var(--space-8);
+      align-items: start;
+    }
+  }
+</style>

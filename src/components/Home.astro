@@ -1,0 +1,73 @@
+---
+import { getEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Hero from './Hero.astro';
+import Work from './Work.astro';
+import Others from './Others.astro';
+import QaList from './QaList.astro';
+import Timeline from './Timeline.astro';
+import Education from './Education.astro';
+import Skills from './Skills.astro';
+import ContactForm from './ContactForm.astro';
+import { ui, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const entry = await getEntry('profile', lang);
+if (!entry) throw new Error(`Missing profile content for ${lang}`);
+const p = entry.data;
+---
+
+<Base lang={lang} title={ui[lang].siteTitle} description={p.metaDescription}>
+  <Hero
+    {lang}
+    role={p.role}
+    tagline={p.tagline}
+    status={p.status}
+    videoLabel={p.heroVideoLabel}
+    photoAlt={p.photoAlt}
+  />
+  <div class="stack-of-sections">
+    <Education title={p.education.title} items={p.education.items} />
+    <Skills title={p.skills.title} groups={p.skills.groups} />
+    <Work
+      {lang}
+      title={p.work.title}
+      intro={p.work.intro}
+      labels={{
+        viewCode: p.work.viewCode,
+        didLabel: p.work.didLabel,
+        stackLabel: p.work.stackLabel,
+      }}
+    />
+    <Others title={p.others.title} items={p.others.items} />
+    <QaList title={p.qa.title} items={p.qa.items} />
+    <Timeline
+      title={p.path.title}
+      intro={p.path.intro}
+      entries={p.path.entries}
+    />
+    <ContactForm
+      title={p.contact.title}
+      intro={p.contact.intro}
+      languagesLabel={p.contact.languagesLabel}
+      languages={p.contact.languages}
+      form={p.contact.form}
+    />
+  </div>
+</Base>
+
+<style>
+  .stack-of-sections {
+    display: grid;
+    gap: var(--space-9);
+  }
+  .stack-of-sections > :global(#work) {
+    margin-block: var(--space-8);
+  }
+  .stack-of-sections > :global(#skills) {
+    margin-block-end: calc(var(--space-6) * -1);
+  }
+</style>

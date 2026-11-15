@@ -1,0 +1,207 @@
+{
+  "metaDescription": "Fabiano Oliveira Silva, ingeniero de QA: pruebas de API e interfaz, automatización con Playwright. Mudándose a España, abierto a remoto, híbrido o presencial.",
+  "role": "Ingeniero de QA",
+  "tagline": "Pruebo API e interfaz, automatizo con Playwright y encuentro el fallo antes que el usuario.",
+  "status": "Mudándome a España. Abierto a trabajo remoto, híbrido o presencial.",
+  "heroVideoLabel": "Suite de pruebas Playwright en ejecución",
+  "photoAlt": "Retrato de Fabiano: hombre de pelo corto y oscuro y barba corta, con chaqueta de cuero negra, delante de una pared de mármol claro.",
+  "education": {
+    "title": "Formación",
+    "items": [
+      {
+        "degree": "Tecnólogo en Análisis y Desarrollo de Sistemas",
+        "school": "Universidade Cruzeiro do Sul (UNICSUL), Brasil",
+        "status": "Concluido en 2021"
+      },
+      {
+        "degree": "MBA y posgrado en Ciberseguridad",
+        "school": "Universidade Cruzeiro do Sul (UNICSUL), Brasil",
+        "status": "Concluido en 2023"
+      },
+      {
+        "degree": "Extensión en Automatización de Pruebas",
+        "school": "Centro Universitário UNIFATEC, Brasil",
+        "status": "Concluido"
+      }
+    ]
+  },
+  "skills": {
+    "title": "Habilidades",
+    "groups": [
+      {
+        "label": "QA y pruebas",
+        "items": [
+          "pruebas manuales y automatizadas",
+          "funcionales",
+          "regresión",
+          "exploratorias",
+          "integración",
+          "UI",
+          "E2E",
+          "cross-browser",
+          "planificación y ejecución de casos de prueba",
+          "reporte y seguimiento de bugs"
+        ]
+      },
+      {
+        "label": "Automatización",
+        "items": [
+          "Playwright",
+          "TypeScript",
+          "Playwright MCP",
+          "automatización de pruebas web",
+          "mantenimiento de scripts"
+        ]
+      },
+      {
+        "label": "API y bases de datos",
+        "items": [
+          "Postman",
+          "APIs REST",
+          "JSON",
+          "SQL",
+          "MySQL",
+          "validación y pruebas de datos"
+        ]
+      },
+      {
+        "label": "Herramientas y procesos",
+        "items": [
+          "Jira",
+          "Git",
+          "GitHub",
+          "GitHub Actions",
+          "fundamentos de CI/CD",
+          "SDLC",
+          "STLC",
+          "Agile",
+          "Scrum",
+          "Kanban"
+        ]
+      },
+      {
+        "label": "Desarrollo",
+        "items": [
+          "HTML5",
+          "CSS3",
+          "JavaScript",
+          "TypeScript",
+          "React",
+          "Vue.js",
+          "Node.js",
+          "Express.js",
+          "Python",
+          "Java",
+          "C#"
+        ]
+      },
+      {
+        "label": "IA aplicada a QA",
+        "items": [
+          "uso de IA y Model Context Protocol (MCP) para apoyar el análisis, la generación y el mantenimiento de pruebas"
+        ]
+      }
+    ]
+  },
+  "work": {
+    "title": "Trabajo",
+    "intro": "Cuatro proyectos en GitHub, con el código abierto.",
+    "viewCode": "Ver código en GitHub",
+    "didLabel": "Qué hice",
+    "stackLabel": "Stack"
+  },
+  "others": {
+    "title": "Otros proyectos",
+    "items": [
+      {
+        "name": "SENTINELX",
+        "line": "Plataforma de gestión de superficie de ataque y evaluación de vulnerabilidades, para uso autorizado. Python, FastAPI y React.",
+        "repo": "https://github.com/Fabianooliveirasilva/SENTINELX"
+      },
+      {
+        "name": "Black Smoke Burger",
+        "line": "Delivery de hamburguesería con pruebas E2E, de accesibilidad y visuales. Next.js y Prisma.",
+        "repo": "https://github.com/Fabianooliveirasilva/Black-smoke-burguer-de-brasa"
+      },
+      {
+        "name": "Sitios y landing pages",
+        "line": "Pet shop, láminas para autos, Beco do Cau, escuela de TI y una calculadora. HTML, CSS y JavaScript."
+      }
+    ]
+  },
+  "qa": {
+    "title": "Qué hago en QA",
+    "items": [
+      {
+        "title": "Automatización E2E",
+        "text": "Playwright con Page Object, fixtures y datos centralizados, en Chromium, Firefox y WebKit."
+      },
+      {
+        "title": "Pruebas manuales y exploratorias",
+        "text": "Casos de prueba, regresión y sesiones exploratorias. Cada bug lleva pasos para reproducir y evidencia."
+      },
+      {
+        "title": "Pruebas de API",
+        "text": "Playwright y Postman, contratos validados con Ajv y límites de autenticación."
+      },
+      {
+        "title": "Datos y SQL",
+        "text": "Consultas SQL para comprobar que el dato coincide con lo que muestra la pantalla."
+      },
+      {
+        "title": "IA aplicada a pruebas",
+        "text": "Playwright MCP para explorar la aplicación e IA para apoyar la escritura de casos, siempre con mi revisión."
+      }
+    ]
+  },
+  "path": {
+    "title": "Trayectoria",
+    "intro": "Un electricista aprende pronto que el fallo rara vez está donde aparece. Ese hábito de diagnosticar antes de tocar es el que llevo a las pruebas de software.",
+    "entries": [
+      {
+        "period": "2026 hasta hoy",
+        "title": "Ingeniero de QA",
+        "text": "Pruebas manuales, de regresión y exploratorias, automatización E2E y de API con Playwright, SQL, Jira e IA aplicada a pruebas."
+      },
+      {
+        "period": "2025 a ene/2026",
+        "title": "Desarrollador front-end",
+        "text": "HTML, CSS, JavaScript, React, Vue, Tailwind y Vite."
+      },
+      {
+        "period": "2010 a 2024",
+        "title": "Técnico electricista",
+        "text": "Diagnóstico de fallos, troubleshooting y atención al detalle en campo."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contacto",
+    "intro": "Escríbeme para hablar de una vacante o de un proyecto. Respondo en español, portugués o inglés.",
+    "languagesLabel": "Idiomas",
+    "languages": [
+      {
+        "label": "Portugués",
+        "text": "nativo"
+      },
+      {
+        "label": "Inglés",
+        "text": "avanzado"
+      },
+      {
+        "label": "Español",
+        "text": "avanzado"
+      }
+    ],
+    "form": {
+      "name": "Nombre",
+      "email": "Correo",
+      "message": "Mensaje",
+      "send": "Enviar mensaje",
+      "sending": "Enviando",
+      "ok": "Mensaje enviado. Respondo pronto.",
+      "error": "No se pudo enviar ahora. Inténtalo de nuevo en unos minutos o usa el correo de al lado.",
+      "invalid": "Revisa los campos: nombre, correo válido y un mensaje de hasta 2000 caracteres."
+    }
+  }
+}

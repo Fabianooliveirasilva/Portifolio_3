@@ -1,0 +1,214 @@
+---
+import Section from './Section.astro';
+
+interface Props {
+  title: string;
+  intro?: string | undefined;
+  languagesLabel: string;
+  languages: { label: string; text: string }[];
+  form: Record<
+    | 'name'
+    | 'email'
+    | 'message'
+    | 'send'
+    | 'sending'
+    | 'ok'
+    | 'error'
+    | 'invalid',
+    string
+  >;
+}
+const { title, intro, languagesLabel, languages, form } = Astro.props;
+---
+
+<Section id="contact" title={title} intro={intro} class="contact">
+  <div class="layout">
+    <div class="direct">
+      <ul class="links">
+        <li>
+          <a
+            href="https://www.linkedin.com/in/fabiano-silva-oliveira/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            LinkedIn
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://github.com/Fabianooliveirasilva"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            GitHub
+          </a>
+        </li>
+      </ul>
+      <h3>{languagesLabel}</h3>
+      <ul class="langs">
+        {languages.map((l) => (
+          <li>
+            {l.label}: {l.text}
+          </li>
+        ))}
+      </ul>
+    </div>
+    <form
+      method="post"
+      action="/api/contact"
+      novalidate
+      data-contact
+      data-ok={form.ok}
+      data-error={form.error}
+      data-invalid={form.invalid}
+      data-sending={form.sending}
+      data-send={form.send}
+    >
+      <label>
+        <span>{form.name}</span>
+        <input
+          name="name"
+          type="text"
+          autocomplete="name"
+          required
+          maxlength="100"
+        />
+      </label>
+      <label>
+        <span>{form.email}</span>
+        <input
+          name="email"
+          type="email"
+          autocomplete="email"
+          required
+          maxlength="200"
+        />
+      </label>
+      <label>
+        <span>{form.message}</span>
+        <textarea name="message" rows="6" required maxlength="2000"></textarea>
+      </label>
+      <div class="trap" aria-hidden="true">
+        <label>
+          Website{' '}
+          <input name="website" type="text" tabindex="-1" autocomplete="off" />
+        </label>
+      </div>
+      <button type="submit">{form.send}</button>
+      <p class="status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</Section>
+
+<style>
+  .contact {
+    gap: var(--space-6);
+  }
+  .layout {
+    display: grid;
+    gap: var(--space-7);
+  }
+  ul {
+    list-style: none;
+    margin: var(--space-4) 0 0;
+    padding: 0;
+  }
+  .links {
+    display: flex;
+    gap: var(--space-5);
+  }
+  h3 {
+    font-size: var(--step-0);
+    margin-block: var(--space-6) 0;
+  }
+  form {
+    display: grid;
+    gap: var(--space-5);
+    padding: var(--space-6);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-edge);
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: var(--glass-blur);
+    border-radius: var(--radius-m);
+  }
+  label span {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    margin-block-end: var(--space-1);
+  }
+  input,
+  textarea {
+    width: 100%;
+    padding: var(--space-3);
+    background: var(--bg);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-s);
+  }
+  input:focus-visible,
+  textarea:focus-visible {
+    outline-offset: 1px;
+    border-color: var(--accent);
+  }
+  input[aria-invalid='true'],
+  textarea[aria-invalid='true'] {
+    border-color: var(--accent);
+    border-width: 2px;
+  }
+  .trap {
+    position: absolute;
+    inset-inline-start: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  button {
+    justify-self: start;
+    min-height: 48px;
+    padding: 0 var(--space-6);
+    background: var(--accent);
+    color: var(--accent-ink);
+    border: 0;
+    border-radius: 999px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.15s;
+  }
+  button:hover {
+    transform: translateY(-2px);
+  }
+  button:active {
+    transform: translateY(0);
+  }
+  button:disabled {
+    opacity: 0.6;
+    cursor: progress;
+    transform: none;
+  }
+  .status:empty {
+    display: none;
+  }
+  .status {
+    padding: var(--space-3) var(--space-4);
+    border-inline-start: 4px solid var(--ink-muted);
+    border-radius: var(--radius-s);
+  }
+  .status[data-state='ok'] {
+    border-color: var(--ok);
+  }
+  .status[data-state='error'] {
+    border-color: var(--accent);
+  }
+  @media (min-width: 48rem) {
+    .layout {
+      grid-template-columns: 5fr 7fr;
+      column-gap: var(--space-8);
+      align-items: start;
+    }
+  }
+</style>
+
+<script>
+  import '../scripts/contact';
+</script>

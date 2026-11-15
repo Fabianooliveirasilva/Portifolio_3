@@ -1,0 +1,44 @@
+{
+  "name": "DEV-PULSE-AI",
+  "order": 4,
+  "repo": "https://github.com/Fabianooliveirasilva/DEV-PULSE-AI",
+  "stack": [
+    "TypeScript",
+    "Next.js",
+    "NestJS",
+    "PostgreSQL",
+    "Playwright",
+    "Claude API"
+  ],
+  "image": "../../assets/images/devpulse-dashboard.png",
+  "imageColor": "#131518",
+  "text": {
+    "pt-br": {
+      "summary": "Monitoramento de aplicações e APIs com incidentes e análise de erros por IA, que separa o que a evidência mostra do que é hipótese.",
+      "did": [
+        "Checagens HTTP abrem e resolvem incidentes sozinhas; erros são agrupados por fingerprint da mensagem.",
+        "A IA só recebe dados filtrados, precisa citar evidência e marca cada afirmação como comprovada ou hipótese.",
+        "Testes com Vitest, Supertest e Playwright; CI com CodeQL."
+      ],
+      "imageAlt": "Painel do DevPulse AI com disponibilidade, tempo de resposta, erros recentes e incidentes, usando dados de demonstração."
+    },
+    "es": {
+      "summary": "Monitoreo de aplicaciones y APIs con incidentes y análisis de errores con IA, que separa lo que muestra la evidencia de lo que es hipótesis.",
+      "did": [
+        "Los checks HTTP abren y resuelven incidentes solos; los errores se agrupan por fingerprint del mensaje.",
+        "La IA solo recibe datos filtrados, debe citar evidencia y marca cada afirmación como comprobada o hipótesis.",
+        "Pruebas con Vitest, Supertest y Playwright; CI con CodeQL."
+      ],
+      "imageAlt": "Panel de DevPulse AI con disponibilidad, tiempo de respuesta, errores recientes e incidentes, con datos de demostración."
+    },
+    "en": {
+      "summary": "Monitoring for web apps and APIs with incidents and AI error analysis that separates what the evidence shows from what is only a hypothesis.",
+      "did": [
+        "HTTP checks open and resolve incidents on their own; errors are grouped by message fingerprint.",
+        "The AI only sees filtered data, must cite evidence, and labels each claim as supported or hypothesis.",
+        "Tests with Vitest, Supertest and Playwright; CI with CodeQL."
+      ],
+      "imageAlt": "DevPulse AI dashboard with availability, response time, recent errors and incidents, using demo data."
+    }
+  }
+}

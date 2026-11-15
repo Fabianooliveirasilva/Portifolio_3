@@ -1,0 +1,201 @@
+---
+import { Picture } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import TechTag from './TechTag.astro';
+import type { Lang } from '../i18n/ui';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  lang: Lang;
+  index: number;
+  labels: { viewCode: string; didLabel: string; stackLabel: string };
+}
+const { project, lang, index, labels } = Astro.props;
+const { name, repo, stack, image, imageColor } = project.data;
+const text = project.data.text[lang];
+const slot = ['wide', 'left', 'right', 'wide-flip'][index] ?? 'wide';
+const headingId = `project-${project.id}`;
+---
+
+<article class={`project sheen ${slot}`} aria-labelledby={headingId}>
+  {image && (
+    <div class="shot" data-color={imageColor}>
+      <Picture
+        src={image}
+        alt={text.imageAlt ?? ''}
+        formats={['avif']}
+        fallbackFormat="webp"
+        widths={[480, 800, 1200]}
+        sizes="(min-width: 64rem) 50vw, 100vw"
+        quality={55}
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  )}
+  <div class="body">
+    <h3 id={headingId}>{name}</h3>
+    <p class="summary">{text.summary}</p>
+    <h4>{labels.didLabel}</h4>
+    <ul class="did">
+      {text.did.map((d) => (
+        <li>{d}</li>
+      ))}
+    </ul>
+    <h4 class="visually-hidden">{labels.stackLabel}</h4>
+    <ul class="stack">
+      {stack.map((s) => (
+        <TechTag name={s} />
+      ))}
+    </ul>
+    <a class="repo" href={repo} rel="noopener noreferrer" target="_blank">
+      {labels.viewCode}
+      <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+        <path
+          d="M4 12 12 4M5 4h7v7"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+        />
+      </svg>
+    </a>
+  </div>
+</article>
+
+<style>
+  .project {
+    display: grid;
+    gap: var(--space-5);
+    container-type: inline-size;
+    align-content: start;
+    padding: var(--space-5);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-edge);
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: var(--glass-blur);
+    border-radius: var(--radius-m);
+  }
+  .shot {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    background: var(--bg);
+    overflow: hidden;
+    aspect-ratio: 2 / 1;
+  }
+  .shot :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top left;
+  }
+  h3 {
+    font-size: var(--step-2);
+  }
+  .summary {
+    margin-block: var(--space-3) var(--space-5);
+    font-size: var(--step-1);
+    line-height: 1.4;
+  }
+  h4 {
+    font-family: var(--font-display);
+    font-size: var(--step--1);
+    font-weight: 600;
+    margin-block-end: var(--space-2);
+    color: var(--ink-muted);
+  }
+  .did {
+    margin: 0 0 var(--space-5);
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: var(--space-2);
+  }
+  .did li {
+    position: relative;
+    padding-inline-start: var(--space-6);
+    max-width: 32em;
+  }
+  .did li::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: 0.4em;
+    width: 0.8em;
+    height: 0.8em;
+    border: 2px solid var(--accent);
+    background: var(--accent);
+  }
+  @supports (animation-timeline: view()) {
+    .did li::before {
+      animation: mark-fill linear both;
+      animation-timeline: view();
+      animation-range: entry 10% entry 70%;
+    }
+  }
+  @keyframes mark-fill {
+    from {
+      transform: scale(0.35);
+      opacity: 0.4;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  .stack {
+    list-style: none;
+    margin: 0 0 var(--space-5);
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .repo {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: 44px;
+    padding-inline: var(--space-5);
+    border-radius: 999px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .repo:hover {
+    color: var(--accent-ink);
+    background: var(--ink);
+  }
+  .repo svg {
+    transition: transform 0.15s;
+  }
+  .repo:hover svg {
+    transform: translate(2px, -2px);
+  }
+  @media (min-width: 48rem) {
+    .wide,
+    .wide-flip {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: var(--space-6);
+      align-items: start;
+    }
+    .shot {
+      aspect-ratio: 4 / 3;
+    }
+    .wide .shot {
+      grid-column: 1 / 8;
+    }
+    .wide .body {
+      grid-column: 8 / -1;
+    }
+    .wide-flip .shot {
+      grid-column: 6 / -1;
+      grid-row: 1;
+    }
+    .wide-flip .body {
+      grid-column: 1 / 6;
+      grid-row: 1;
+    }
+  }
+</style>

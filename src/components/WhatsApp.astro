@@ -1,0 +1,73 @@
+---
+import { WHATSAPP_NUMBER } from 'astro:env/client';
+import { siWhatsapp } from 'simple-icons';
+import { ui, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const { label, message } = ui[lang].whatsapp;
+const digits = (WHATSAPP_NUMBER ?? '').replace(/\D/g, '');
+const half = Math.ceil(digits.length / 2);
+---
+
+{digits && (
+  <>
+    <a
+      class="whatsapp"
+      href="#contact"
+      data-whatsapp
+      data-a={digits.slice(0, half)}
+      data-b={digits.slice(half)}
+      data-text={message}
+      rel="noopener noreferrer"
+      target="_blank"
+      aria-label={label}
+    >
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+        <path fill="currentColor" d={siWhatsapp.path} />
+      </svg>
+      <span>WhatsApp</span>
+    </a>
+    <script>
+      import '../scripts/whatsapp';
+    </script>
+  </>
+)}
+
+<style>
+  .whatsapp {
+    position: fixed;
+    inset-block-end: var(--space-5);
+    inset-inline-end: var(--space-5);
+    z-index: 10;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    min-width: 56px;
+    min-height: 56px;
+    padding-inline: var(--space-4);
+    border-radius: 999px;
+    background: #25d366;
+    color: #08260f;
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 0.75rem 1.5rem -0.5rem rgb(0 0 0 / 0.55);
+    transition: transform 0.15s;
+  }
+  .whatsapp:hover {
+    color: #08260f;
+    transform: translateY(-2px);
+  }
+  .whatsapp span {
+    display: none;
+  }
+  @media (min-width: 48rem) {
+    .whatsapp span {
+      display: inline;
+    }
+  }
+</style>

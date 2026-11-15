@@ -1,0 +1,40 @@
+{
+  "name": "API-Testing-Framework",
+  "order": 2,
+  "repo": "https://github.com/Fabianooliveirasilva/API-Testing-Framework",
+  "stack": ["TypeScript", "Playwright", "Ajv", "Postman", "GitHub Actions"],
+  "image": "../../assets/images/api-report.png",
+  "imageColor": "#ffffff",
+  "text": {
+    "pt-br": {
+      "summary": "Testes automatizados de API para a Restful Booker: autenticação, reservas e contratos de resposta.",
+      "did": [
+        "Clientes HTTP, fixtures com limpeza dos dados criados, fábricas de payload e schemas separados por responsabilidade.",
+        "Contratos validados com Ajv; limites de autenticação testados.",
+        "Desvios observados no serviço registrados como comportamento atual, sem tratá-los como o contrato desejado.",
+        "Coleção do Postman para exploração manual e pipeline no GitHub Actions."
+      ],
+      "imageAlt": "Relatório HTML do Playwright com 70 testes de API aprovados, agrupados por arquivo de teste."
+    },
+    "es": {
+      "summary": "Pruebas automatizadas de API para Restful Booker: autenticación, reservas y contratos de respuesta.",
+      "did": [
+        "Clientes HTTP, fixtures con limpieza de los datos creados, fábricas de payload y schemas separados por responsabilidad.",
+        "Contratos validados con Ajv; límites de autenticación probados.",
+        "Desviaciones observadas en el servicio registradas como comportamiento actual, sin tratarlas como el contrato deseado.",
+        "Colección de Postman para exploración manual y pipeline en GitHub Actions."
+      ],
+      "imageAlt": "Informe HTML de Playwright con 70 pruebas de API aprobadas, agrupadas por archivo de prueba."
+    },
+    "en": {
+      "summary": "Automated API tests for Restful Booker: authentication, bookings and response contracts.",
+      "did": [
+        "HTTP clients, fixtures that clean up created data, payload factories and schemas, each with its own responsibility.",
+        "Contracts validated with Ajv; authentication boundaries tested.",
+        "Observed service deviations recorded as current behavior, not presented as the desired contract.",
+        "Postman collection for manual exploration and a GitHub Actions pipeline."
+      ],
+      "imageAlt": "Playwright HTML report with 70 API tests passed, grouped by test file."
+    }
+  }
+}

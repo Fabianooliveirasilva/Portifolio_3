@@ -1,0 +1,56 @@
+---
+import Section from './Section.astro';
+
+interface Props {
+  title: string;
+  intro?: string | undefined;
+  entries: { period: string; title: string; text: string }[];
+}
+const { title, intro, entries } = Astro.props;
+---
+
+<Section id="path" title={title} intro={intro} class="path">
+  <ol>
+    {entries.map((e) => (
+      <li>
+        <p class="period">{e.period}</p>
+        <div>
+          <h3>{e.title}</h3>
+          <p>{e.text}</p>
+        </div>
+      </li>
+    ))}
+  </ol>
+</Section>
+
+<style>
+  .path {
+    gap: var(--space-6);
+  }
+  ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  ol li {
+    display: grid;
+    gap: var(--space-2);
+    padding-block: var(--space-5);
+    border-block-start: 1px solid var(--line-strong);
+  }
+  .period {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--accent);
+  }
+  h3 {
+    font-size: var(--step-1);
+    margin-block-end: var(--space-1);
+  }
+  @media (min-width: 48rem) {
+    ol li {
+      grid-template-columns: 12rem 1fr;
+      column-gap: var(--space-6);
+    }
+  }
+</style>

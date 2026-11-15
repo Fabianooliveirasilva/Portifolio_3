@@ -1,0 +1,37 @@
+{
+  "name": "QA.Ecommerce-Playwright-Automation",
+  "order": 3,
+  "repo": "https://github.com/Fabianooliveirasilva/QA.Ecommerce-Playwright-Automation",
+  "stack": ["TypeScript", "Playwright", "Playwright MCP", "GitHub Actions"],
+  "image": "../../assets/images/ecommerce-report.png",
+  "imageColor": "#ffffff",
+  "text": {
+    "pt-br": {
+      "summary": "Automação E2E do SauceDemo, com fluxos críticos de e-commerce em Chromium, Firefox e WebKit.",
+      "did": [
+        "Page Objects, fixtures compartilhadas e dados de teste centralizados.",
+        "Cenários positivos e negativos, isolados entre si.",
+        "Sessões de teste manual assistidas pelo Playwright MCP, com registro estruturado da execução."
+      ],
+      "imageAlt": "Relatório HTML do Playwright com 7 testes de checkout aprovados no Chromium."
+    },
+    "es": {
+      "summary": "Automatización E2E de SauceDemo, con flujos críticos de e-commerce en Chromium, Firefox y WebKit.",
+      "did": [
+        "Page Objects, fixtures compartidas y datos de prueba centralizados.",
+        "Escenarios positivos y negativos, aislados entre sí.",
+        "Sesiones de prueba manual asistidas por Playwright MCP, con registro estructurado de la ejecución."
+      ],
+      "imageAlt": "Informe HTML de Playwright con 7 pruebas de checkout aprobadas en Chromium."
+    },
+    "en": {
+      "summary": "E2E automation for SauceDemo, covering critical e-commerce flows on Chromium, Firefox and WebKit.",
+      "did": [
+        "Page Objects, shared fixtures and centralized test data.",
+        "Positive and negative scenarios, isolated from each other.",
+        "Manual test sessions assisted by Playwright MCP, with a structured execution record."
+      ],
+      "imageAlt": "Playwright HTML report with 7 checkout tests passed on Chromium."
+    }
+  }
+}

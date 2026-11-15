@@ -1,0 +1,44 @@
+{
+  "name": "QA-Testing-Manager",
+  "order": 1,
+  "repo": "https://github.com/Fabianooliveirasilva/QA-Testing-Manager-",
+  "stack": [
+    "TypeScript",
+    "React",
+    "Express",
+    "PostgreSQL",
+    "Playwright",
+    "GitHub Actions"
+  ],
+  "image": "../../assets/images/qtm-dashboard.png",
+  "imageColor": "#15191c",
+  "text": {
+    "pt-br": {
+      "summary": "SaaS multi-tenant para gerir o ciclo de qualidade: casos de teste, planos, execuções manuais, bugs com evidência e importação de relatórios do Playwright.",
+      "did": [
+        "Construí o produto e a suíte que o testa: unitários, integração, segurança, E2E e acessibilidade rodando no CI.",
+        "Importação do relatório JSON do Playwright por token de projeto, direto do pipeline.",
+        "Assistente de IA opcional por organização, com segredos removidos e saída validada."
+      ],
+      "imageAlt": "Painel do QA-Testing-Manager com contagem de projetos, casos, bugs, taxa de aprovação e histórico de execuções, usando dados de demonstração."
+    },
+    "es": {
+      "summary": "SaaS multi-tenant para gestionar el ciclo de calidad: casos de prueba, planes, ejecuciones manuales, bugs con evidencia e importación de informes de Playwright.",
+      "did": [
+        "Construí el producto y la suite que lo prueba: unitarias, integración, seguridad, E2E y accesibilidad en CI.",
+        "Importación del informe JSON de Playwright con token de proyecto, directo desde el pipeline.",
+        "Asistente de IA opcional por organización, con secretos eliminados y salida validada."
+      ],
+      "imageAlt": "Panel de QA-Testing-Manager con proyectos, casos, bugs, tasa de aprobación e historial de ejecuciones, con datos de demostración."
+    },
+    "en": {
+      "summary": "Multi-tenant SaaS for managing the quality lifecycle: test cases, plans, manual runs, bugs with evidence, and Playwright report import.",
+      "did": [
+        "Built the product and the suite that tests it: unit, integration, security, E2E and accessibility running in CI.",
+        "Playwright JSON report import with a project token, straight from the pipeline.",
+        "Optional AI assistant per organization, with secrets redacted and output validated."
+      ],
+      "imageAlt": "QA-Testing-Manager dashboard showing project, test case and bug counts, pass rate and execution history, using demo data."
+    }
+  }
+}

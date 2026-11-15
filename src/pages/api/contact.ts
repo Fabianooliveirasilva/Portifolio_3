@@ -55,9 +55,9 @@ export const POST: APIRoute = async ({ request, clientAddress, url }) => {
   const length = Number(request.headers.get('content-length') ?? 0);
   if (length > MAX_BYTES) return json(413, { ok: false });
 
-  const sender = getLimiter();
-  if (!sender) return json(503, { ok: false });
   try {
+    const sender = getLimiter();
+    if (!sender) return json(503, { ok: false });
     if (!(await sender.allow(clientAddress))) return json(429, { ok: false });
   } catch (error) {
     console.error('contact: rate limiter failed', (error as Error).message);

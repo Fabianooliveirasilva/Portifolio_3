@@ -3,6 +3,7 @@
 import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { extname, join, normalize } from 'node:path';
+import { brotliCompressSync } from 'node:zlib';
 
 const root = '.vercel/output/static';
 const port = Number(process.env.PORT ?? 4321);
@@ -23,6 +24,16 @@ const types = {
   '.webm': 'video/webm',
   '.txt': 'text/plain',
 };
+
+const compressible = new Set([
+  '.html',
+  '.css',
+  '.js',
+  '.json',
+  '.xml',
+  '.svg',
+  '.txt',
+]);
 
 async function resolveFile(pathname) {
   const clean = normalize(decodeURIComponent(pathname)).replace(
@@ -46,10 +57,16 @@ createServer(async (req, res) => {
   const file = await resolveFile(pathname);
   const status = file ? 200 : 404;
   const target = file ?? join(root, '404.html');
-  const body = await readFile(target);
+  let body = await readFile(target);
+  const ext = extname(target);
+  const encoded =
+    compressible.has(ext) &&
+    /\bbr\b/.test(req.headers['accept-encoding'] ?? '');
+  if (encoded) body = brotliCompressSync(body);
   res.writeHead(status, {
     ...headers,
-    'content-type': types[extname(target)] ?? 'application/octet-stream',
+    'content-type': types[ext] ?? 'application/octet-stream',
+    ...(encoded && { 'content-encoding': 'br', vary: 'accept-encoding' }),
   });
   res.end(req.method === 'HEAD' ? undefined : body);
 }).listen(port, () => console.log(`serving on http://localhost:${port}`));
